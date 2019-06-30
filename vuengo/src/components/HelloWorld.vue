@@ -9,28 +9,12 @@
         <form v-on:submit.prevent="addTask"><!-- calls the function addTask on submit -->
           <h2 class="subtitle">Add task</h2>
 
-          <div class="field"> <!-- Normal input field for the description -->
-            <label class="label">Description</label>
-            <div class="control">
+          <div class="field is-grouped"> <!-- Normal input field for the description -->
+            <div class="control is-expanded">
               <input class="input" type="text" v-model= "description"> <!-- connects to the description variable -->
             </div>
-          </div>
-
-          <div class="field"> <!-- Select field for choosing the status (0 and 1 as value, same as in the django status choices) -->v
-            <label class="label">Status</label>
             <div class="control">
-              <div class="select">
-                <select v-model="status">  <!-- connects to the status variable -->
-                  <option value="0">To do</option>
-                  <option value="1">Done</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div class="field is-grouped"> <!-- Submit button -->
-            <div class="control">
-              <button class="button is-link">Submit</button>
+              <button class = "button is-link">ADD</button>
             </div>
           </div>
         </form>
@@ -40,13 +24,12 @@
     <hr>
 
     <div class="columns">
-      <div class="column is-half"> <!-- Half of the column for todo tasks -->
+      <div class="column"> <!-- the column for todo tasks -->
         <h2 class="subtitle">Todo</h2>
-
         <div class="todo">
           <div class="card" v-for="task in tasks" v-if="task.status == 0"> <!-- Loop through the tasks array, if status is 0 (to do) then we'll show it. -->
             <div class="card-content">
-              <div class="content">
+              <div class="checkbox">
                 {{ task.description }} <!-- Print the task`s description here -->
               </div>
             </div>
@@ -54,20 +37,6 @@
             <footer class="card-footer">
               <a class="card-footer-item" v-on:click="setStatus(task.id)">Done</a> <!-- Button for setting a task to done -->
             </footer>
-          </div>
-        </div>
-      </div>
-
-      <div class="column is-half"> <!-- Half of the column for done tasks -->
-        <h2 class="subtitle">Done</h2>
-
-        <div class="done">
-          <div class="card" v-for="task in tasks" v-if="task.status == 1"> <!-- Loop through the tasks array, if status is 1 (done) then we'll show it. -->
-            <div class="card-content">
-              <div class="content">
-                {{ task.description }}
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -150,7 +119,7 @@ export default {
         },
         auth: {
           username: 'admin',
-          password: 'password123'
+          password: 'Password123'
         }
       })
     }
