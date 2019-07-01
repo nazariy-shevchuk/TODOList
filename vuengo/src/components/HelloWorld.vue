@@ -35,7 +35,7 @@
             </div>
 
             <footer class="card-footer">
-              <a class="card-footer-item" v-on:click="setStatus(task.id)">Done</a> <!-- Button for setting a task to done -->
+              <a class="card-footer-item" v-on:click="setStatus(task.id)">Delete</a> <!-- Button for setting a task to done -->
             </footer>
           </div>
         </div>
